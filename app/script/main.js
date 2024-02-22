@@ -12,14 +12,6 @@ const app = createApp({
     },
     methods: {
         createNewTask() {
-            // this.tasks.push(
-            //     {
-            //         id: this.tasks.length,
-            //         text: this.newTask,
-            //         done: false
-            //     }
-            // );
-            // console.log(this.tasks);
             const data = {
                 task: {
                         id: this.tasks.length +2,
