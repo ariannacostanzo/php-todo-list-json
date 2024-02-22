@@ -35,8 +35,8 @@
                     
                 </ul>
             </div>
-            <form action="" class="col" id="form" @submit.prevent="createNewTask" method="post">
-                <input type="text" placeholder="Inserisci elemento..." name="task" v-model="newTask">
+            <form class="col" id="form" @submit.prevent="createNewTask" method="post">
+                <input type="text" placeholder="Inserisci elemento..." v-model.trim="newTask">
                 <button id="form-button" type="submit">Inserisci</button>
             </form>
         </div>
