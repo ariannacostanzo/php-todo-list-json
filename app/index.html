@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +35,8 @@
                     
                 </ul>
             </div>
-            <form action="" class="col" id="form">
-                <input type="text" placeholder="Inserisci elemento...">
+            <form action="" class="col" id="form" @submit.prevent="createNewTask">
+                <input type="text" placeholder="Inserisci elemento..." v-model="newTask">
                 <button id="form-button" type="submit">Inserisci</button>
             </form>
         </div>
