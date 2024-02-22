@@ -18,43 +18,20 @@
     <script src="script/main.js" defer></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="root">
         <h1>Todo List</h1>
         <div class="row">
             <div id="todolist" class="col">
                 <ul>
-                    <li class="list-item">
-                        Ciao
+                    <li class="list-item" v-for="task in tasks" :key="task.id">
+                        {{task.text}}
                         <button type="button" class="trash-container">
                             <i class="fa-solid fa-trash"></i>
                             <!-- da mettere questa on hover -->
                             <!-- <i class="fa-solid fa-trash fa-shake"></i> -->
                         </button type="button">
                     </li>
-                    <li class="list-item">
-                        Ciao
-                        <button type="button" class="trash-container">
-                            <i class="fa-solid fa-trash"></i>
-                            <!-- da mettere questa on hover -->
-                            <!-- <i class="fa-solid fa-trash fa-shake"></i> -->
-                        </button type="button">
-                    </li>
-                    <li class="list-item">
-                        Ciao
-                        <button type="button" class="trash-container">
-                            <i class="fa-solid fa-trash"></i>
-                            <!-- da mettere questa on hover -->
-                            <!-- <i class="fa-solid fa-trash fa-shake"></i> -->
-                        </button type="button">
-                    </li>
-                    <li class="list-item">
-                        Ciao
-                        <button type="button" class="trash-container">
-                            <i class="fa-solid fa-trash"></i>
-                            <!-- da mettere questa on hover -->
-                            <!-- <i class="fa-solid fa-trash fa-shake"></i> -->
-                        </button type="button">
-                    </li>
+                    
                 </ul>
             </div>
             <form action="" class="col" id="form">
