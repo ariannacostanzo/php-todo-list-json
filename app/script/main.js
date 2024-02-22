@@ -25,6 +25,15 @@ const app = createApp({
                 this.tasks = res.data;
             })
             this.newTask = '';
+        },
+        toggleTaskDone(task) {
+            //come faccio a salvare sul file json?
+            task.done = !task.done;
+            console.log(task.done)
+        },
+        deleteTask(task) {
+            //non funziona, e non elimina dal file json
+            this.tasks = this.tasks.filter((currentTask) => currentTask.id !== task.id);
         }
     },
     created() {
