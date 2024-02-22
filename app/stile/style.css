@@ -9,7 +9,7 @@
 body {
     background-color:
         #001632;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .container {
@@ -19,6 +19,9 @@ body {
 
 /* general */
 
+.deleted {
+    text-decoration: line-through;
+}
 
 h1 {
     color: #717a81;
@@ -47,6 +50,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
+}
+
+.list-item.deleted {
+    text-decoration: line-through;
 }
 
 .list-item:not(:last-of-type) {
@@ -83,7 +91,7 @@ h1 {
     width: 20%;
     height: 100%;
     border-radius: 0px 5px 5px 0px;
-    border: 1px solid #ac8a15 ;
+    border: 1px solid #ac8a15;
     cursor: pointer;
     background-color: transparent;
     color: #ac8a15;
