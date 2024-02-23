@@ -26,10 +26,8 @@
                         <span :class="{'deleted':task.done}" @click="toggleTaskDone(task.id)">
                             {{task.text}}
                         </span>
-                        <button type="button" class="trash-container" @click="deleteTask(task.id)">
-                            <i class="fa-solid fa-trash"></i>
-                            <!-- da mettere questa on hover -->
-                            <!-- <i class="fa-solid fa-trash fa-shake"></i> -->
+                        <button type="button" class="trash-container" @click="deleteTask(task.id)" @mouseover="startAnimation" @mouseleave="stopAnimation">
+                            <i class="fa-solid fa-trash"  :class="{'fa-shake' : isHovering}"></i>
                         </button type="button">
                     </li>
                     

@@ -7,7 +7,8 @@ const app = createApp({
     data() {
         return {
             tasks: [],
-            newTaskText: ''
+            newTaskText: '',
+            isHovering: false
         }
     },
     methods: {
@@ -32,9 +33,14 @@ const app = createApp({
             const config = { headers: { 'Content-Type': 'multipart/form-data' } }
             axios.post(`${endpoint}delete/`, data, config).then(res => {
                 this.tasks = res.data
-                console.log(res.data)
             })
-        }
+        },
+        startAnimation() {
+            this.isHovering = true;
+        },
+        stopAnimation() {
+            this.isHovering = false;
+        },
     },
     created() {
         axios.get(endpoint).then(res => {
