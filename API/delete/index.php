@@ -3,28 +3,32 @@
 header('Content-Type: application/json');
 
 //prendo il percorso dal database
-$source_path = __DIR__ . '/../database/tasks.json';
+$source_path = __DIR__ . '/../../database/tasks.json';
 
 //metto in una variabile il contenuto del percorso recuperato
 $tasks_json = file_get_contents($source_path);
 
 
-//ottengo il valore dell'input
-$new_task_text = $_POST['task-text'] ?? '';
+//per cambiare done
+$task_id = $_POST['id'] ?? null;
+
 //decodo il json in php
 $tasks = json_decode($tasks_json, true);
 
 //mi arriva il testo ma io devo aggiungere tutto un oggetto
 
-if ($new_task_text) {
-    $new_task = [
-        'done' => false,
-        'text' => $new_task_text,
-        'id' => uniqid()
-    ];
+
+if ($task_id) {
     //unique id mi da un id univoco
-    $tasks[] = $new_task;
+
+    //si può fare anche così'
+    $tasks = array_filter($tasks, function($task) {
+        return $task['id'] != $_POST['id'];
+    });
 } 
+
+    
+
 
 $tasks = json_encode($tasks);
 
@@ -35,3 +39,4 @@ file_put_contents($source_path, $tasks);
 echo $tasks;
 
 
+?>

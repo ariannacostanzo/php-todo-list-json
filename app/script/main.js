@@ -7,33 +7,33 @@ const app = createApp({
     data() {
         return {
             tasks: [],
-            newTask: ''
+            newTaskText: ''
         }
     },
     methods: {
         createNewTask() {
-            const data = {
-                task: {
-                        id: this.tasks.length +2,
-                        text: this.newTask,
-                        done: false
-                    }
-            };
-
-            const config = {headers: {'Content-Type' : 'multipart/form-data'}}
+            const data = { 'task-text': this.newTaskText };
+            //la parte di creare dell'oggetto deve essere fatta da backend quindi si lascia solo task: text:this.newTask
+            const config = { headers: { 'Content-Type': 'multipart/form-data' } }
             axios.post(endpoint, data, config).then(res => {
                 this.tasks = res.data;
             })
-            this.newTask = '';
+            this.newTaskText = '';
         },
-        toggleTaskDone(task) {
-            //come faccio a salvare sul file json?
-            task.done = !task.done;
-            console.log(task.done)
+        toggleTaskDone(id) {
+            const data = {id};
+            const config = {headers: {'Content-Type' : 'multipart/form-data'}}
+            axios.post(`${endpoint}toggle/`, data, config).then(res => {
+                this.tasks = res.data
+            })
         },
-        deleteTask(task) {
-            //non funziona, e non elimina dal file json
-            this.tasks = this.tasks.filter((currentTask) => currentTask.id !== task.id);
+        deleteTask(id) {
+            const data = { id };
+            const config = { headers: { 'Content-Type': 'multipart/form-data' } }
+            axios.post(`${endpoint}delete/`, data, config).then(res => {
+                this.tasks = res.data
+                console.log(res.data)
+            })
         }
     },
     created() {
@@ -45,3 +45,4 @@ const app = createApp({
 });
 
 app.mount('#root')
+
